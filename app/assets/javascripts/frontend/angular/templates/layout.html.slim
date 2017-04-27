@@ -1,0 +1,14 @@
+ng-include src="'partials/menu.html'"
+.page-header.text-center
+  h2 Products
+  a.btn.btn-primary ui-sref="product-new" ng-if="user.admin" Add product
+.row ng-repeat="slice in products"
+  .col-md-3 ng-repeat="product in slice" ng-class="{'col-md-offset-1': $index === 0}"
+    .thumbnail
+        img.img-thumbnail src=image_path('default_171x180.png')
+        .title.text-center
+          a ui-sref="product({id: product.id})"
+            | {{ product.name }}
+          p.price
+            | $ {{ product.price}}
+          ng-include src="'partials/add_to_cart.html'" ng-if="!product.out"

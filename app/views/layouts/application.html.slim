@@ -1,0 +1,19 @@
+doctype html
+html.no-js.css-menubar lang="en"
+  head
+    meta content="text/html; charset=UTF-8" http-equiv="Content-Type"
+    meta charset="utf-8"
+    meta content="IE=edge" http-equiv="X-UA-Compatible"
+    meta content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" name="viewport"
+    meta content="bootstrap admin template" name="description"
+    meta content="" name="author"
+    title
+      | Shop
+
+    = stylesheet_link_tag 'frontend', media: 'all'
+    = csrf_meta_tags
+
+  body ng-app="shop"
+    .container
+      div[ui-view]
+    = javascript_include_tag 'frontend'

@@ -1,0 +1,42 @@
+ng-include src="'partials/menu.html'"
+.page-header
+  h2
+    span
+      | Cart
+
+table.table.table-striped.table-hover
+  thead
+    tr
+      th #
+      th Product name
+      th Price
+      th Quantity
+      th Total
+      th Actions
+  tbody
+    tr ng-repeat="product in cart track by $index"
+      td
+        | {{ $index + 1 }}
+      td
+        | {{ product.name }}
+      td
+        | $ {{ product.price }}
+      td
+        select.form-control ng-init="product.quantity = items[0].key" ng-options="item.key as item.value for item in items" ng-model="product.quantity"
+      td
+        | $ {{ product.price * product.quantity | number: 2 }}
+      td
+        a.add-to-cart.btn.btn-danger.btn-sm ng-click="deleteFromCart(product)"
+          span.glyphicon.glyphicon-trash
+    tr
+      td
+      td
+      td
+      td
+        | Grand Total
+      td
+        | ${{ grantTotal() | number: 2 }}
+
+btn-group.pull-right
+  button.btn.btn-primary ng-class="{'disabled': cart.length === 0}" ng-click="createOrder()"
+    | Create order

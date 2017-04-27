@@ -1,0 +1,25 @@
+ng-include src="'partials/menu.html'"
+.page-header
+  h2
+    span
+      | {{ product.name }}
+    small
+      a ui-sref="product-edit({id: product.id})" ng-if="user.admin" href=""
+        span.glyphicon.glyphicon-edit
+        | Edit
+.product-image.pull-left
+  = image_tag 'default_171x180.png', class: 'img-thumbnail'
+.summary
+  h3 $ {{ product.price}}
+  ng-include src="'partials/add_to_cart.html'"
+
+.clearfix
+br
+.details
+  ul.nav.nav-tabs
+    li.active
+      a
+        | Description
+  .tab-content
+    #desc.tab-pane.active
+      | {{ product.description }}

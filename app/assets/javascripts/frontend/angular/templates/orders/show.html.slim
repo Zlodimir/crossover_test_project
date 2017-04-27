@@ -1,0 +1,8 @@
+ng-include src="'partials/menu.html'"
+
+.alert.alert-success ng-if="order.paid"
+  strong Success!
+  |  Your {{ order.order_no }} order has been paid successfully
+.alert.alert-danger ng-if="!order.paid"
+  strong Failed!
+  |  Payment for your order # {{ order.order_no }} was rejected

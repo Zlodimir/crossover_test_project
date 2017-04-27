@@ -1,0 +1,12 @@
+ng-include src="'partials/menu.html'"
+form ng-init=("loginForm = {}") ng-submit="submitLogin(loginForm)" role="form" 
+  .form-group
+    label for="email"  Email
+    input#email.form-control name="email" ng-model="loginForm.email" required="required" type="email" /
+  .form-group
+    label for="password"  Password
+    input#password.form-control name="password" ng-model="loginForm.password" required="required" type="password" /
+  button.btn.btn-primary.btn-lg type="submit"  Sign in
+
+.alert.alert-danger role="alert" ng-show="error"
+  | {{error}}

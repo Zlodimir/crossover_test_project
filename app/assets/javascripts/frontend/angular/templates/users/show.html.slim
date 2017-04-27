@@ -1,0 +1,54 @@
+ng-include src="'partials/menu.html'"
+.row
+  .col-md-4
+    h2 Profile
+    .row
+      .col-md-6
+        | Email
+      .col-md-6
+        strong
+          | {{ user.email }}
+    .row
+      .col-md-6
+        | First name
+      .col-md-6
+        strong
+          | {{ user.firstname }}
+    .row
+      .col-md-6
+          | Last name
+      .col-md-6
+        strong
+          | {{ user.lastname }}
+  .col-md-8
+    h2 Orders
+    .panel-group
+      .panel.panel-default ng-repeat="order in orders"
+        .panel-heading
+          | {{ order.order_no }} Date: {{ order.date }}
+          span.label.label-danger.pull-right ng-if="!order.paid"
+            | NOT PAID
+          span.label.label-success.pull-right ng-if="order.paid"
+            | PAID
+        .panel-body
+          table.table.table-striped.table-hover
+            thead
+              tr
+                th Product name
+                th Price
+                th Quantity
+                th Total
+            tbody
+              tr ng-repeat="line in order.order_lines track by $index"
+                td
+                  | {{ line.product_name }}
+                td
+                  | $ {{ line.unit_price }}
+                td
+                  | {{ line.qty }}
+                td
+                  | $ {{ line.unit_price * line.qty | number: 2 }}
+          | Grand total: ${{ order.total }}
+          a.btn.btn-danger.btn-sm.btn-checkout.pull-right ng-if="!order.paid" ng-click="checkOut(order)"
+            | CHECKOUT
+

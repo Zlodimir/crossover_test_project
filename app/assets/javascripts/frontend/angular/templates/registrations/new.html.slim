@@ -1,0 +1,21 @@
+ng-include src="'partials/menu.html'"
+form ng-init=("registrationForm = {}") ng-submit="handleRegBtnClick()" role="form" 
+  .form-group
+    label for="email" Email
+    input#email.form-control name="email" ng-model="registrationForm.email" required="required" type="email"
+  .form-group
+    label for="password" Password
+    input#password.form-control name="password" ng-model="registrationForm.password" required="required" type="password"
+  .form-group
+    label for="password_confirmation" Password confirmation
+    input#password_confirmation.form-control name="password_confirmation" ng-model="registrationForm.password_confirmation" required="required" type="password"
+  .form-group
+    label for="firstname" First name
+    input#firstname.form-control name="first_name" ng-model="registrationForm.firstname" required="required"
+  .form-group
+    label for="lastname" Last name
+    input#lastname.form-control name="last_name" ng-model="registrationForm.lastname" required="required"
+  button.btn.btn-primary.btn-lg type="submit"  Register
+
+.alert.alert-danger role="alert" ng-show="error"
+  | {{error}}

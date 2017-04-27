@@ -1,0 +1,31 @@
+nav.navbar.navbar-inverse ng-controller="LandingController"
+  .container-fluid
+    .navbar-header
+      a.navbar-brand ui-sref="landing"
+        | Shop
+    ul.nav.navbar-nav
+      li ng-class="{'active': location.path() === '/' || location.path() === '/new'}"
+        a ui-sref="landing"
+          | Products
+      li ng-class="getClass('/cart')"
+        a ui-sref="cart" 
+          span.glyphicon.glyphicon-shopping-cart
+          | Cart ({{ cart.length }})
+    ul.nav.navbar-nav.navbar-right
+      li ng-show="!user.id"
+        a ui-sref="sign_up"
+          span.glyphicon.glyphicon-user
+          | Sign up
+      li ng-show="!user.id"
+        a ui-sref="sign_in"
+          span.glyphicon.glyphicon-log-in
+          | Sign in
+      li ng-show="user.id" ng-class="getClass('/user')"
+        a ui-sref="user"
+          span.glyphicon.glyphicon-user
+          | {{ user.email }}
+      li ng-show="user.id"
+        a ng-click='handleSignOut()' href=""
+          span.glyphicon.glyphicon-log-out
+          | Sign out
+
